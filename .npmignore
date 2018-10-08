@@ -5,7 +5,6 @@
 /node_modules
 /.vagrant
 /atlassian-ide-plugin.xml
-/css
 /export
 /nbproject
 
@@ -17,3 +16,12 @@
 thumbs.db
 *.ipr
 *.iws
+
+# dev
+#------------------------------------
+
+.editorconfig
+.eslintrc.json
+.sass-lint.yml
+gulpfile.js
+index.html
