@@ -5,6 +5,7 @@
 /node_modules
 /.vagrant
 /atlassian-ide-plugin.xml
+/css
 /export
 /nbproject
 
