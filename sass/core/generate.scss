@@ -17,10 +17,10 @@
 @mixin _prismjs-theme-core--use($css-property, $value, $var) {
 	@if $value {
 		@if $prismjs-theme-core--use-css-variables == 1 {
-			#{$css-property}: var(--prismjs-theme-core--#{$var});
 			#{$css-property}: $value; // sass-lint:disable-line no-duplicate-properties
+			#{$css-property}: var(#{$var});
 		} @else if $prismjs-theme-core--use-css-variables == 2 {
-			#{$css-property}: var(--prismjs-theme-core--#{$var});
+			#{$css-property}: var(#{$var});
 		} @else {
 			#{$css-property}: $value;
 		}
@@ -37,53 +37,58 @@
 	@if ($prismjs-theme-core--use-css-variables != 0) {
 		:root {
 			@include _prismjs-theme-core--set-map((
+					(--prismjs-theme-core--color, $prismjs-theme-core--color),
 					(--prismjs-theme-core--background, $prismjs-theme-core--background),
+					(--prismjs-theme-core--text-shadow, $prismjs-theme-core--text-shadow),
+					(--prismjs-theme-core--font-family, $prismjs-theme-core--font-family),
+					(--prismjs-theme-core--font-size, $prismjs-theme-core--font-size),
+					(--prismjs-theme-core--line-height, $prismjs-theme-core--line-height),
+					(--prismjs-theme-core--tab-size, $prismjs-theme-core--tab-size),
+					(--prismjs-theme-core--selection--color, $prismjs-theme-core--selection--color),
+					(--prismjs-theme-core--selection--background, $prismjs-theme-core--selection--background),
 					(--prismjs-theme-core--pre--border-radius, $prismjs-theme-core--pre--border-radius),
+					(--prismjs-theme-core--pre--margin, $prismjs-theme-core--pre--margin),
 					(--prismjs-theme-core--pre--padding, $prismjs-theme-core--pre--padding),
-					(--prismjs-theme-core--pre--margin, $prismjs-theme-core--pre--margin)
+					(--prismjs-theme-core--code--border-radius, $prismjs-theme-core--code--border-radius),
+					(--prismjs-theme-core--code--padding, $prismjs-theme-core--code--padding)
 			));
 		}
 	}
 
 	%base {
-		color: $prismjs-theme-core--color;
+		@include _prismjs-theme-core--use-map((
+				(color, $prismjs-theme-core--color, --prismjs-theme-core--color),
+				(text-shadow, $prismjs-theme-core--text-shadow, --prismjs-theme-core--text-shadow),
+				(font-family, $prismjs-theme-core--font-family, --prismjs-theme-core--font-family),
+				(line-height, $prismjs-theme-core--line-height, --prismjs-theme-core--line-height),
+				(tab-size, $prismjs-theme-core--tab-size, --prismjs-theme-core--tab-size)
+		));
 		background: none;
-		text-shadow: $prismjs-theme-core--text-shadow;
-		font-family: $prismjs-theme-core--font-family;
 		text-align: left;
 		white-space: pre;
 		word-spacing: normal;
 		word-break: normal;
 		word-wrap: normal;
-		line-height: $prismjs-theme-core--line-height;
-
-		-moz-tab-size: $prismjs-theme-core--tab-size; // sass-lint:disable-line no-vendor-prefixes
-		-o-tab-size: $prismjs-theme-core--tab-size; // sass-lint:disable-line no-vendor-prefixes
-		tab-size: $prismjs-theme-core--tab-size;
-
-		-webkit-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
-		-moz-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
-		-ms-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
 		hyphens: none;
 
 		&::-moz-selection,
 		& ::-moz-selection {
+			@include _prismjs-theme-core--use-map((
+					(background, $prismjs-theme-core--selection--background, --prismjs-theme-core--selection--background),
+					(color, $prismjs-theme-core--selection--color, --prismjs-theme-core--selection--color)
+			));
 			text-shadow: none;
-			background: $prismjs-theme-core--selection--background;
 			opacity: 1;
-			@if ($prismjs-theme-core--selection--color) {
-				color: $prismjs-theme-core--selection--color;
-			}
 		}
 
 		&::selection,
 		& ::selection {
+			@include _prismjs-theme-core--use-map((
+					(background, $prismjs-theme-core--selection--background, --prismjs-theme-core--selection--background),
+					(color, $prismjs-theme-core--selection--color, --prismjs-theme-core--selection--color)
+			));
 			text-shadow: none;
-			background: $prismjs-theme-core--selection--background;
 			opacity: 1;
-			@if ($prismjs-theme-core--selection--color) {
-				color: $prismjs-theme-core--selection--color;
-			}
 		}
 
 		@media print {
@@ -96,9 +101,11 @@
 			@extend %base;
 
 			:not(pre) > & {
-				background: $prismjs-theme-core--background;
-				padding: $prismjs-theme-core--code--padding;
-				border-radius: $prismjs-theme-core--code--border-radius;
+				@include _prismjs-theme-core--use-map((
+						(background, $prismjs-theme-core--background, --prismjs-theme-core--background),
+						(border-radius, $prismjs-theme-core--code--border-radius, --prismjs-theme-core--code--border-radius),
+						(padding, $prismjs-theme-core--pre--padding, --prismjs-theme-core--code--padding)
+				));
 				white-space: normal;
 			}
 		}
@@ -106,10 +113,10 @@
 		@at-root pre#{&} {
 			@extend %base;
 			@include _prismjs-theme-core--use-map((
-					(background, $prismjs-theme-core--background, background),
-					(border-radius, $prismjs-theme-core--pre--border-radius, pre--border-radius),
-					(padding, $prismjs-theme-core--pre--padding, pre--padding),
-					(margin, $prismjs-theme-core--pre--margin, pre--margin)
+					(background, $prismjs-theme-core--background, --prismjs-theme-core--background),
+					(border-radius, $prismjs-theme-core--pre--border-radius, --prismjs-theme-core--pre--border-radius),
+					(padding, $prismjs-theme-core--pre--padding, --prismjs-theme-core--pre--padding),
+					(margin, $prismjs-theme-core--pre--margin, --prismjs-theme-core--pre--margin)
 			));
 			overflow: auto;
 		}
