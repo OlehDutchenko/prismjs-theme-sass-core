@@ -1,0 +1,117 @@
+@import "defaults";
+
+/// @access private
+@mixin _prismjs-theme-core--set($var, $value) {
+	@if $value {
+		#{$var}: $value;
+	}
+}
+
+@mixin _prismjs-theme-core--set-map($lists) {
+	@each $list in $lists {
+		@include _prismjs-theme-core--set(nth($list, 1), nth($list, 2));
+	}
+}
+
+/// @access private
+@mixin _prismjs-theme-core--use($css-property, $value, $var) {
+	@if $value {
+		@if $prismjs-theme-core--use-css-variables == 1 {
+			#{$css-property}: var(--prismjs-theme-core--#{$var});
+			#{$css-property}: $value; // sass-lint:disable-line no-duplicate-properties
+		} @else if $prismjs-theme-core--use-css-variables == 2 {
+			#{$css-property}: var(--prismjs-theme-core--#{$var});
+		} @else {
+			#{$css-property}: $value;
+		}
+	}
+}
+
+@mixin _prismjs-theme-core--use-map($lists) {
+	@each $list in $lists {
+		@include _prismjs-theme-core--use(nth($list, 1), nth($list, 2), nth($list, 3));
+	}
+}
+
+@mixin prismjs-theme-core--generate() {
+	@if ($prismjs-theme-core--use-css-variables != 0) {
+		:root {
+			@include _prismjs-theme-core--set-map((
+					(--prismjs-theme-core--background, $prismjs-theme-core--background),
+					(--prismjs-theme-core--pre--border-radius, $prismjs-theme-core--pre--border-radius),
+					(--prismjs-theme-core--pre--padding, $prismjs-theme-core--pre--padding),
+					(--prismjs-theme-core--pre--margin, $prismjs-theme-core--pre--margin)
+			));
+		}
+	}
+
+	%base {
+		color: $prismjs-theme-core--color;
+		background: none;
+		text-shadow: $prismjs-theme-core--text-shadow;
+		font-family: $prismjs-theme-core--font-family;
+		text-align: left;
+		white-space: pre;
+		word-spacing: normal;
+		word-break: normal;
+		word-wrap: normal;
+		line-height: $prismjs-theme-core--line-height;
+
+		-moz-tab-size: $prismjs-theme-core--tab-size; // sass-lint:disable-line no-vendor-prefixes
+		-o-tab-size: $prismjs-theme-core--tab-size; // sass-lint:disable-line no-vendor-prefixes
+		tab-size: $prismjs-theme-core--tab-size;
+
+		-webkit-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
+		-moz-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
+		-ms-hyphens: none; // sass-lint:disable-line no-vendor-prefixes
+		hyphens: none;
+
+		&::-moz-selection,
+		& ::-moz-selection {
+			text-shadow: none;
+			background: $prismjs-theme-core--selection--background;
+			opacity: 1;
+			@if ($prismjs-theme-core--selection--color) {
+				color: $prismjs-theme-core--selection--color;
+			}
+		}
+
+		&::selection,
+		& ::selection {
+			text-shadow: none;
+			background: $prismjs-theme-core--selection--background;
+			opacity: 1;
+			@if ($prismjs-theme-core--selection--color) {
+				color: $prismjs-theme-core--selection--color;
+			}
+		}
+
+		@media print {
+			text-shadow: none !important; // sass-lint:disable-line no-important
+		}
+	}
+
+	[class*="language-"] {
+		@at-root code#{&} {
+			@extend %base;
+
+			:not(pre) > & {
+				background: $prismjs-theme-core--background;
+				padding: $prismjs-theme-core--code--padding;
+				border-radius: $prismjs-theme-core--code--border-radius;
+				white-space: normal;
+			}
+		}
+
+		@at-root pre#{&} {
+			@extend %base;
+			@include _prismjs-theme-core--use-map((
+					(background, $prismjs-theme-core--background, background),
+					(border-radius, $prismjs-theme-core--pre--border-radius, pre--border-radius),
+					(padding, $prismjs-theme-core--pre--padding, pre--padding),
+					(margin, $prismjs-theme-core--pre--margin, pre--margin)
+			));
+			overflow: auto;
+		}
+	}
+}

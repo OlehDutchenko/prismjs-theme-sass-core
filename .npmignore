@@ -16,3 +16,12 @@
 thumbs.db
 *.ipr
 *.iws
+
+# dev
+#------------------------------------
+
+.editorconfig
+.eslintrc.json
+.sass-lint.yml
+gulpfile.js
+index.html
