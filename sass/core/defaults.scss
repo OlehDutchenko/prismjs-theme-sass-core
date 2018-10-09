@@ -31,21 +31,45 @@ $prismjs-theme-core--namespace: (
 	opacity: .7
 );
 
+@import "./tokens/attr-name/defaults";
+@import "./tokens/attr-name/get-values";
+@import "./tokens/attr-name/print-css-vars";
+
 @import "./tokens/boolean/defaults";
 @import "./tokens/boolean/get-values";
 @import "./tokens/boolean/print-css-vars";
+
+@import "./tokens/builtin/defaults";
+@import "./tokens/builtin/get-values";
+@import "./tokens/builtin/print-css-vars";
 
 @import "./tokens/cdata/defaults";
 @import "./tokens/cdata/get-values";
 @import "./tokens/cdata/print-css-vars";
 
+@import "./tokens/char/defaults";
+@import "./tokens/char/get-values";
+@import "./tokens/char/print-css-vars";
+
 @import "./tokens/comment/defaults";
 @import "./tokens/comment/get-values";
 @import "./tokens/comment/print-css-vars";
 
+@import "./tokens/constant/defaults";
+@import "./tokens/constant/get-values";
+@import "./tokens/constant/print-css-vars";
+
+@import "./tokens/deleted/defaults";
+@import "./tokens/deleted/get-values";
+@import "./tokens/deleted/print-css-vars";
+
 @import "./tokens/doctype/defaults";
 @import "./tokens/doctype/get-values";
 @import "./tokens/doctype/print-css-vars";
+
+@import "./tokens/inserted/defaults";
+@import "./tokens/inserted/get-values";
+@import "./tokens/inserted/print-css-vars";
 
 @import "./tokens/number/defaults";
 @import "./tokens/number/get-values";
@@ -63,9 +87,17 @@ $prismjs-theme-core--namespace: (
 @import "./tokens/punctuation/get-values";
 @import "./tokens/punctuation/print-css-vars";
 
+@import "./tokens/selector/defaults";
+@import "./tokens/selector/get-values";
+@import "./tokens/selector/print-css-vars";
+
 @import "./tokens/string/defaults";
 @import "./tokens/string/get-values";
 @import "./tokens/string/print-css-vars";
+
+@import "./tokens/symbol/defaults";
+@import "./tokens/symbol/get-values";
+@import "./tokens/symbol/print-css-vars";
 
 @import "./tokens/tag/defaults";
 @import "./tokens/tag/get-values";
