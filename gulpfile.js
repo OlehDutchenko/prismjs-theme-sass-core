@@ -37,7 +37,10 @@ gulp.task('sass', () => {
 				indentType: 'tab',
 				indentWidth: 1,
 				linefeed: 'crlf',
-				outputStyle: 'expanded'
+				outputStyle: 'expanded',
+				includePaths: [
+					'./node_modules/'
+				]
 			}))
 			.pipe(iF(onWriteDest, gulp.dest(sassDest)))
 			.pipe(posctcss([
@@ -64,7 +67,10 @@ gulp.task('sass', () => {
 			indentType: 'tab',
 			indentWidth: 1,
 			linefeed: 'crlf',
-			outputStyle: 'expanded'
+			outputStyle: 'expanded',
+			includePaths: [
+				'./node_modules/'
+			]
 		}).on('error', notify.onError({
 			message: 'Error: <%= error.message %>',
 			title: 'Error running something'
