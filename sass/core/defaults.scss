@@ -43,6 +43,10 @@ $prismjs-theme-core--namespace: (
 @import "./tokens/attr-value/get-values";
 @import "./tokens/attr-value/print-css-vars";
 
+@import "./tokens/attribute/defaults";
+@import "./tokens/attribute/get-values";
+@import "./tokens/attribute/print-css-vars";
+
 @import "./tokens/boolean/defaults";
 @import "./tokens/boolean/get-values";
 @import "./tokens/boolean/print-css-vars";
@@ -58,6 +62,10 @@ $prismjs-theme-core--namespace: (
 @import "./tokens/char/defaults";
 @import "./tokens/char/get-values";
 @import "./tokens/char/print-css-vars";
+
+@import "./tokens/class/defaults";
+@import "./tokens/class/get-values";
+@import "./tokens/class/print-css-vars";
 
 @import "./tokens/class-name/defaults";
 @import "./tokens/class-name/get-values";
@@ -87,6 +95,14 @@ $prismjs-theme-core--namespace: (
 @import "./tokens/function/get-values";
 @import "./tokens/function/print-css-vars";
 
+@import "./tokens/hexcode/defaults";
+@import "./tokens/hexcode/get-values";
+@import "./tokens/hexcode/print-css-vars";
+
+@import "./tokens/id/defaults";
+@import "./tokens/id/get-values";
+@import "./tokens/id/print-css-vars";
+
 @import "./tokens/important/defaults";
 @import "./tokens/important/get-values";
 @import "./tokens/important/print-css-vars";
@@ -114,6 +130,14 @@ $prismjs-theme-core--namespace: (
 @import "./tokens/property/defaults";
 @import "./tokens/property/get-values";
 @import "./tokens/property/print-css-vars";
+
+@import "./tokens/pseudo-class/defaults";
+@import "./tokens/pseudo-class/get-values";
+@import "./tokens/pseudo-class/print-css-vars";
+
+@import "./tokens/pseudo-element/defaults";
+@import "./tokens/pseudo-element/get-values";
+@import "./tokens/pseudo-element/print-css-vars";
 
 @import "./tokens/punctuation/defaults";
 @import "./tokens/punctuation/get-values";

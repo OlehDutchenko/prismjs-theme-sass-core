@@ -106,7 +106,7 @@
 	.language-plsql & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-plsql, --prismjs-theme-core--token-symbol--language-plsql); }
 	.language-powershell & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-powershell, --prismjs-theme-core--token-symbol--language-powershell); }
 	.language-processing & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-processing, --prismjs-theme-core--token-symbol--language-processing); }
-	.language-symbol & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-symbol, --prismjs-theme-core--token-symbol--language-symbol); }
+	.language-prolog & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-prolog, --prismjs-theme-core--token-symbol--language-prolog); }
 	.language-properties & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-properties, --prismjs-theme-core--token-symbol--language-properties); }
 	.language-protobuf & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-protobuf, --prismjs-theme-core--token-symbol--language-protobuf); }
 	.language-pug & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-symbol--language-pug, --prismjs-theme-core--token-symbol--language-pug); }

@@ -105,7 +105,7 @@
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-plsql, --prismjs-theme-core--token-constant--language-plsql);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-powershell, --prismjs-theme-core--token-constant--language-powershell);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-processing, --prismjs-theme-core--token-constant--language-processing);
-	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-constant, --prismjs-theme-core--token-constant--language-constant);
+	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-prolog, --prismjs-theme-core--token-constant--language-prolog);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-properties, --prismjs-theme-core--token-constant--language-properties);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-protobuf, --prismjs-theme-core--token-constant--language-protobuf);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-constant--language-pug, --prismjs-theme-core--token-constant--language-pug);

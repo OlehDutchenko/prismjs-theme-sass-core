@@ -106,7 +106,7 @@
 	.language-plsql & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-plsql, --prismjs-theme-core--token-punctuation--language-plsql); }
 	.language-powershell & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-powershell, --prismjs-theme-core--token-punctuation--language-powershell); }
 	.language-processing & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-processing, --prismjs-theme-core--token-punctuation--language-processing); }
-	.language-punctuation & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-punctuation, --prismjs-theme-core--token-punctuation--language-punctuation); }
+	.language-prolog & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-prolog, --prismjs-theme-core--token-punctuation--language-prolog); }
 	.language-properties & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-properties, --prismjs-theme-core--token-punctuation--language-properties); }
 	.language-protobuf & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-protobuf, --prismjs-theme-core--token-punctuation--language-protobuf); }
 	.language-pug & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-punctuation--language-pug, --prismjs-theme-core--token-punctuation--language-pug); }

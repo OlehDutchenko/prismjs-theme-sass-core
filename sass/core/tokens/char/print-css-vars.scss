@@ -105,7 +105,7 @@
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-plsql, --prismjs-theme-core--token-char--language-plsql);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-powershell, --prismjs-theme-core--token-char--language-powershell);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-processing, --prismjs-theme-core--token-char--language-processing);
-	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-char, --prismjs-theme-core--token-char--language-char);
+	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-prolog, --prismjs-theme-core--token-char--language-prolog);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-properties, --prismjs-theme-core--token-char--language-properties);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-protobuf, --prismjs-theme-core--token-char--language-protobuf);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-char--language-pug, --prismjs-theme-core--token-char--language-pug);

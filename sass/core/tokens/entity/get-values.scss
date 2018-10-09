@@ -106,7 +106,7 @@
 	.language-plsql & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-plsql, --prismjs-theme-core--token-entity--language-plsql); }
 	.language-powershell & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-powershell, --prismjs-theme-core--token-entity--language-powershell); }
 	.language-processing & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-processing, --prismjs-theme-core--token-entity--language-processing); }
-	.language-entity & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-entity, --prismjs-theme-core--token-entity--language-entity); }
+	.language-prolog & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-prolog, --prismjs-theme-core--token-entity--language-prolog); }
 	.language-properties & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-properties, --prismjs-theme-core--token-entity--language-properties); }
 	.language-protobuf & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-protobuf, --prismjs-theme-core--token-entity--language-protobuf); }
 	.language-pug & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-entity--language-pug, --prismjs-theme-core--token-entity--language-pug); }

@@ -35,17 +35,21 @@
 			@include _prismjs-theme-core--print-css-vars--token-atrule();
 			@include _prismjs-theme-core--print-css-vars--token-attr-name();
 			@include _prismjs-theme-core--print-css-vars--token-attr-value();
+			@include _prismjs-theme-core--print-css-vars--token-attribute();
 			@include _prismjs-theme-core--print-css-vars--token-boolean();
 			@include _prismjs-theme-core--print-css-vars--token-builtin();
 			@include _prismjs-theme-core--print-css-vars--token-cdata();
 			@include _prismjs-theme-core--print-css-vars--token-char();
+			@include _prismjs-theme-core--print-css-vars--token-class();
 			@include _prismjs-theme-core--print-css-vars--token-class-name();
 			@include _prismjs-theme-core--print-css-vars--token-comment();
 			@include _prismjs-theme-core--print-css-vars--token-constant();
 			@include _prismjs-theme-core--print-css-vars--token-deleted();
 			@include _prismjs-theme-core--print-css-vars--token-doctype();
 			@include _prismjs-theme-core--print-css-vars--token-entity();
+			@include _prismjs-theme-core--print-css-vars--token-hexcode();
 			@include _prismjs-theme-core--print-css-vars--token-function();
+			@include _prismjs-theme-core--print-css-vars--token-id();
 			@include _prismjs-theme-core--print-css-vars--token-important();
 			@include _prismjs-theme-core--print-css-vars--token-inserted();
 			@include _prismjs-theme-core--print-css-vars--token-keyword();
@@ -53,6 +57,8 @@
 			@include _prismjs-theme-core--print-css-vars--token-operator();
 			@include _prismjs-theme-core--print-css-vars--token-prolog();
 			@include _prismjs-theme-core--print-css-vars--token-property();
+			@include _prismjs-theme-core--print-css-vars--token-pseudo-class();
+			@include _prismjs-theme-core--print-css-vars--token-pseudo-element();
 			@include _prismjs-theme-core--print-css-vars--token-punctuation();
 			@include _prismjs-theme-core--print-css-vars--token-regex();
 			@include _prismjs-theme-core--print-css-vars--token-selector();
@@ -130,6 +136,10 @@
 			@include _prismjs-theme-core--get-values--token-attr-value();
 		}
 
+		&.attribute {
+			@include _prismjs-theme-core--get-values--token-attribute();
+		}
+
 		&.boolean {
 			@include _prismjs-theme-core--get-values--token-boolean();
 		}
@@ -144,6 +154,10 @@
 
 		&.char {
 			@include _prismjs-theme-core--get-values--token-char();
+		}
+
+		&.class {
+			@include _prismjs-theme-core--get-values--token-class();
 		}
 
 		&.class-name {
@@ -174,6 +188,14 @@
 			@include _prismjs-theme-core--get-values--token-function();
 		}
 
+		&.hexcode {
+			@include _prismjs-theme-core--get-values--token-hexcode();
+		}
+
+		&.id {
+			@include _prismjs-theme-core--get-values--token-id();
+		}
+
 		&.important {
 			@include _prismjs-theme-core--get-values--token-important();
 		}
@@ -200,6 +222,14 @@
 
 		&.property {
 			@include _prismjs-theme-core--get-values--token-property();
+		}
+
+		&.pseudo-class {
+			@include _prismjs-theme-core--get-values--token-pseudo-class();
+		}
+
+		&.pseudo-element {
+			@include _prismjs-theme-core--get-values--token-pseudo-element();
 		}
 
 		&.punctuation {
@@ -232,6 +262,14 @@
 
 		&.variable {
 			@include _prismjs-theme-core--get-values--token-variable();
+		}
+
+		&.bold {
+			font-weight: bold;
+		}
+
+		&.italic {
+			font-weight: italic;
 		}
 	}
 }

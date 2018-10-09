@@ -105,7 +105,7 @@
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-plsql, --prismjs-theme-core--token-regex--language-plsql);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-powershell, --prismjs-theme-core--token-regex--language-powershell);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-processing, --prismjs-theme-core--token-regex--language-processing);
-	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-regex, --prismjs-theme-core--token-regex--language-regex);
+	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-prolog, --prismjs-theme-core--token-regex--language-prolog);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-properties, --prismjs-theme-core--token-regex--language-properties);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-protobuf, --prismjs-theme-core--token-regex--language-protobuf);
 	@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--token-regex--language-pug, --prismjs-theme-core--token-regex--language-pug);

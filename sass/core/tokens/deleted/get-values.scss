@@ -106,7 +106,7 @@
 	.language-plsql & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-plsql, --prismjs-theme-core--token-deleted--language-plsql); }
 	.language-powershell & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-powershell, --prismjs-theme-core--token-deleted--language-powershell); }
 	.language-processing & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-processing, --prismjs-theme-core--token-deleted--language-processing); }
-	.language-deleted & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-deleted, --prismjs-theme-core--token-deleted--language-deleted); }
+	.language-prolog & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-prolog, --prismjs-theme-core--token-deleted--language-prolog); }
 	.language-properties & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-properties, --prismjs-theme-core--token-deleted--language-properties); }
 	.language-protobuf & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-protobuf, --prismjs-theme-core--token-deleted--language-protobuf); }
 	.language-pug & { @include _prismjs-theme-core--get-values($prismjs-theme-core--token-deleted--language-pug, --prismjs-theme-core--token-deleted--language-pug); }
