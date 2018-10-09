@@ -1,166 +1,172 @@
 $prismjs-theme-core--use-css-variables: 1 !default;
 
-$prismjs-theme-core--color: black !default;
-$prismjs-theme-core--background: #f5f2f0 !default;
-$prismjs-theme-core--text-shadow: none !default;
-$prismjs-theme-core--font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace !default;
-$prismjs-theme-core--font-size: 1em !default;
-$prismjs-theme-core--line-height: 1.5em !default;
-$prismjs-theme-core--tab-size: 4 !default;
+$prismjs-theme-core--base: (
+	color: black,
+	text-shadow: none,
+	font-family: #{Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace},
+	font-size: 1em,
+	line-height: 1.5em,
+	tab-size: 4,
+);
 
-$prismjs-theme-core--selection--color: false !default;
-$prismjs-theme-core--selection--background: #b3d4fc !default;
+$prismjs-theme-core--selection: (
+	color: false,
+	background: #b3d4fc
+);
 
-$prismjs-theme-core--pre--border-radius: 0 !default;
-$prismjs-theme-core--pre--margin: .5em 0 !default;
-$prismjs-theme-core--pre--padding: 1em !default;
+$prismjs-theme-core--pre: (
+	background: #f5f2f0,
+	border-radius: 0,
+	margin: .5em 0,
+	padding: 1em
+);
 
-$prismjs-theme-core--code--border-radius: .2em !default;
-$prismjs-theme-core--code--padding: .1em !default;
+$prismjs-theme-core--code: (
+	background: #f5f2f0,
+	border-radius: .2em,
+	padding: .1em
+);
 
-$prismjs-theme-core--namespace--opacity: .7 !default;
+$prismjs-theme-core--namespace: (
+	opacity: .7
+);
 
-$prismjs-theme-core--token-comment--color: slategray !default;
-$prismjs-theme-core--token-comment--background: false !default;
-$prismjs-theme-core--token-comment--font-weight: false !default;
-$prismjs-theme-core--token-comment--font-style: false !default;
+@import "./tokens/atrule/defaults";
+@import "./tokens/atrule/get-values";
+@import "./tokens/atrule/print-css-vars";
 
-$prismjs-theme-core--token-prolog--color: slategray !default;
-$prismjs-theme-core--token-prolog--background: false !default;
-$prismjs-theme-core--token-prolog--font-weight: false !default;
-$prismjs-theme-core--token-prolog--font-style: false !default;
+@import "./tokens/attr-name/defaults";
+@import "./tokens/attr-name/get-values";
+@import "./tokens/attr-name/print-css-vars";
 
-$prismjs-theme-core--token-doctype--color: slategray !default;
-$prismjs-theme-core--token-doctype--background: false !default;
-$prismjs-theme-core--token-doctype--font-weight: false !default;
-$prismjs-theme-core--token-doctype--font-style: false !default;
+@import "./tokens/attr-value/defaults";
+@import "./tokens/attr-value/get-values";
+@import "./tokens/attr-value/print-css-vars";
 
-$prismjs-theme-core--token-cdata--color: slategray !default;
-$prismjs-theme-core--token-cdata--background: false !default;
-$prismjs-theme-core--token-cdata--font-weight: false !default;
-$prismjs-theme-core--token-cdata--font-style: false !default;
+@import "./tokens/attribute/defaults";
+@import "./tokens/attribute/get-values";
+@import "./tokens/attribute/print-css-vars";
 
-$prismjs-theme-core--token-punctuation--color: #999 !default;
-$prismjs-theme-core--token-punctuation--background: false !default;
-$prismjs-theme-core--token-punctuation--font-weight: false !default;
-$prismjs-theme-core--token-punctuation--font-style: false !default;
+@import "./tokens/boolean/defaults";
+@import "./tokens/boolean/get-values";
+@import "./tokens/boolean/print-css-vars";
 
-$prismjs-theme-core--token-property--color: #905 !default;
-$prismjs-theme-core--token-property--background: false !default;
-$prismjs-theme-core--token-property--font-weight: false !default;
-$prismjs-theme-core--token-property--font-style: false !default;
+@import "./tokens/builtin/defaults";
+@import "./tokens/builtin/get-values";
+@import "./tokens/builtin/print-css-vars";
 
-$prismjs-theme-core--token-tag--color: #905 !default;
-$prismjs-theme-core--token-tag--background: false !default;
-$prismjs-theme-core--token-tag--font-weight: false !default;
-$prismjs-theme-core--token-tag--font-style: false !default;
+@import "./tokens/cdata/defaults";
+@import "./tokens/cdata/get-values";
+@import "./tokens/cdata/print-css-vars";
 
-$prismjs-theme-core--token-boolean--color: #905 !default;
-$prismjs-theme-core--token-boolean--background: false !default;
-$prismjs-theme-core--token-boolean--font-weight: false !default;
-$prismjs-theme-core--token-boolean--font-style: false !default;
+@import "./tokens/char/defaults";
+@import "./tokens/char/get-values";
+@import "./tokens/char/print-css-vars";
 
-$prismjs-theme-core--token-number--color: #905 !default;
-$prismjs-theme-core--token-number--background: false !default;
-$prismjs-theme-core--token-number--font-weight: false !default;
-$prismjs-theme-core--token-number--font-style: false !default;
+@import "./tokens/class/defaults";
+@import "./tokens/class/get-values";
+@import "./tokens/class/print-css-vars";
 
-$prismjs-theme-core--token-constant--color: #905 !default;
-$prismjs-theme-core--token-constant--background: false !default;
-$prismjs-theme-core--token-constant--font-weight: false !default;
-$prismjs-theme-core--token-constant--font-style: false !default;
+@import "./tokens/class-name/defaults";
+@import "./tokens/class-name/get-values";
+@import "./tokens/class-name/print-css-vars";
 
-$prismjs-theme-core--token-symbol--color: #905 !default;
-$prismjs-theme-core--token-symbol--background: false !default;
-$prismjs-theme-core--token-symbol--font-weight: false !default;
-$prismjs-theme-core--token-symbol--font-style: false !default;
+@import "./tokens/comment/defaults";
+@import "./tokens/comment/get-values";
+@import "./tokens/comment/print-css-vars";
 
-$prismjs-theme-core--token-deleted--color: #905 !default;
-$prismjs-theme-core--token-deleted--background: false !default;
-$prismjs-theme-core--token-deleted--font-weight: false !default;
-$prismjs-theme-core--token-deleted--font-style: false !default;
+@import "./tokens/constant/defaults";
+@import "./tokens/constant/get-values";
+@import "./tokens/constant/print-css-vars";
 
-$prismjs-theme-core--token-selector--color: #690 !default;
-$prismjs-theme-core--token-selector--background: false !default;
-$prismjs-theme-core--token-selector--font-weight: false !default;
-$prismjs-theme-core--token-selector--font-style: false !default;
+@import "./tokens/deleted/defaults";
+@import "./tokens/deleted/get-values";
+@import "./tokens/deleted/print-css-vars";
 
-$prismjs-theme-core--token-attr-name--color: #690 !default;
-$prismjs-theme-core--token-attr-name--background: false !default;
-$prismjs-theme-core--token-attr-name--font-weight: false !default;
-$prismjs-theme-core--token-attr-name--font-style: false !default;
+@import "./tokens/doctype/defaults";
+@import "./tokens/doctype/get-values";
+@import "./tokens/doctype/print-css-vars";
 
-$prismjs-theme-core--token-string--color: #690 !default;
-$prismjs-theme-core--token-string--background: false !default;
-$prismjs-theme-core--token-string--font-weight: false !default;
-$prismjs-theme-core--token-string--font-style: false !default;
+@import "./tokens/entity/defaults";
+@import "./tokens/entity/get-values";
+@import "./tokens/entity/print-css-vars";
 
-$prismjs-theme-core--token-char--color: #690 !default;
-$prismjs-theme-core--token-char--background: false !default;
-$prismjs-theme-core--token-char--font-weight: false !default;
-$prismjs-theme-core--token-char--font-style: false !default;
+@import "./tokens/function/defaults";
+@import "./tokens/function/get-values";
+@import "./tokens/function/print-css-vars";
 
-$prismjs-theme-core--token-builtin--color: #690 !default;
-$prismjs-theme-core--token-builtin--background: false !default;
-$prismjs-theme-core--token-builtin--font-weight: false !default;
-$prismjs-theme-core--token-builtin--font-style: false !default;
+@import "./tokens/hexcode/defaults";
+@import "./tokens/hexcode/get-values";
+@import "./tokens/hexcode/print-css-vars";
 
-$prismjs-theme-core--token-inserted--color: #690 !default;
-$prismjs-theme-core--token-inserted--background: false !default;
-$prismjs-theme-core--token-inserted--font-weight: false !default;
-$prismjs-theme-core--token-inserted--font-style: false !default;
+@import "./tokens/id/defaults";
+@import "./tokens/id/get-values";
+@import "./tokens/id/print-css-vars";
 
-$prismjs-theme-core--token-operator--color: #9a6e3a !default;
-$prismjs-theme-core--token-operator--background: false !default;
-$prismjs-theme-core--token-operator--font-weight: false !default;
-$prismjs-theme-core--token-operator--font-style: false !default;
+@import "./tokens/important/defaults";
+@import "./tokens/important/get-values";
+@import "./tokens/important/print-css-vars";
 
-$prismjs-theme-core--token-entity--color: #9a6e3a !default;
-$prismjs-theme-core--token-entity--background: false !default;
-$prismjs-theme-core--token-entity--font-weight: false !default;
-$prismjs-theme-core--token-entity--font-style: false !default;
+@import "./tokens/inserted/defaults";
+@import "./tokens/inserted/get-values";
+@import "./tokens/inserted/print-css-vars";
 
-$prismjs-theme-core--token-url--color: #9a6e3a !default;
-$prismjs-theme-core--token-url--background: false !default;
-$prismjs-theme-core--token-url--font-weight: false !default;
-$prismjs-theme-core--token-url--font-style: false !default;
+@import "./tokens/keyword/defaults";
+@import "./tokens/keyword/get-values";
+@import "./tokens/keyword/print-css-vars";
 
-$prismjs-theme-core--token-atrule--color: #07a !default;
-$prismjs-theme-core--token-atrule--background: false !default;
-$prismjs-theme-core--token-atrule--font-weight: false !default;
-$prismjs-theme-core--token-atrule--font-style: false !default;
+@import "./tokens/number/defaults";
+@import "./tokens/number/get-values";
+@import "./tokens/number/print-css-vars";
 
-$prismjs-theme-core--token-attr-value--color: #07a !default;
-$prismjs-theme-core--token-attr-value--background: false !default;
-$prismjs-theme-core--token-attr-value--font-weight: false !default;
-$prismjs-theme-core--token-attr-value--font-style: false !default;
+@import "./tokens/operator/defaults";
+@import "./tokens/operator/get-values";
+@import "./tokens/operator/print-css-vars";
 
-$prismjs-theme-core--token-keyword--color: #07a !default;
-$prismjs-theme-core--token-keyword--background: false !default;
-$prismjs-theme-core--token-keyword--font-weight: false !default;
-$prismjs-theme-core--token-keyword--font-style: false !default;
+@import "./tokens/prolog/defaults";
+@import "./tokens/prolog/get-values";
+@import "./tokens/prolog/print-css-vars";
 
-$prismjs-theme-core--token-function--color: #dd4a68 !default;
-$prismjs-theme-core--token-function--background: false !default;
-$prismjs-theme-core--token-function--font-weight: false !default;
-$prismjs-theme-core--token-function--font-style: false !default;
+@import "./tokens/property/defaults";
+@import "./tokens/property/get-values";
+@import "./tokens/property/print-css-vars";
 
-$prismjs-theme-core--token-class-name--color: #dd4a68 !default;
-$prismjs-theme-core--token-class-name--background: false !default;
-$prismjs-theme-core--token-class-name--font-weight: false !default;
-$prismjs-theme-core--token-class-name--font-style: false !default;
+@import "./tokens/pseudo-class/defaults";
+@import "./tokens/pseudo-class/get-values";
+@import "./tokens/pseudo-class/print-css-vars";
 
-$prismjs-theme-core--token-regex--color: #e90 !default;
-$prismjs-theme-core--token-regex--background: false !default;
-$prismjs-theme-core--token-regex--font-weight: false !default;
-$prismjs-theme-core--token-regex--font-style: false !default;
+@import "./tokens/pseudo-element/defaults";
+@import "./tokens/pseudo-element/get-values";
+@import "./tokens/pseudo-element/print-css-vars";
 
-$prismjs-theme-core--token-important--color: #e90 !default;
-$prismjs-theme-core--token-important--background: false !default;
-$prismjs-theme-core--token-important--font-weight: bold !default;
-$prismjs-theme-core--token-important--font-style: false !default;
+@import "./tokens/punctuation/defaults";
+@import "./tokens/punctuation/get-values";
+@import "./tokens/punctuation/print-css-vars";
 
-$prismjs-theme-core--token-variable--color: #e90 !default;
-$prismjs-theme-core--token-variable--background: false !default;
-$prismjs-theme-core--token-variable--font-weight: false !default;
-$prismjs-theme-core--token-variable--font-style: false !default;
+@import "./tokens/regex/defaults";
+@import "./tokens/regex/get-values";
+@import "./tokens/regex/print-css-vars";
+
+@import "./tokens/selector/defaults";
+@import "./tokens/selector/get-values";
+@import "./tokens/selector/print-css-vars";
+
+@import "./tokens/string/defaults";
+@import "./tokens/string/get-values";
+@import "./tokens/string/print-css-vars";
+
+@import "./tokens/symbol/defaults";
+@import "./tokens/symbol/get-values";
+@import "./tokens/symbol/print-css-vars";
+
+@import "./tokens/tag/defaults";
+@import "./tokens/tag/get-values";
+@import "./tokens/tag/print-css-vars";
+
+@import "./tokens/url/defaults";
+@import "./tokens/url/get-values";
+@import "./tokens/url/print-css-vars";
+
+@import "./tokens/variable/defaults";
+@import "./tokens/variable/get-values";
+@import "./tokens/variable/print-css-vars";

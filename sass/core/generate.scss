@@ -1,187 +1,77 @@
 @import "./defaults";
 
-/// @access private
-@mixin _prismjs-theme-core--set($var, $value) {
-	@if $value {
-		#{$var}: $value;
-	}
-}
-
-@mixin _prismjs-theme-core--set-map($lists) {
-	@each $list in $lists {
-		@include _prismjs-theme-core--set(nth($list, 1), nth($list, 2));
-	}
-}
-
-/// @access private
-@mixin _prismjs-theme-core--use($css-property, $value: false, $var: false) {
-	@if $value {
-		@if $prismjs-theme-core--use-css-variables == 1 {
-			#{$css-property}: $value;
-			#{$css-property}: var(#{$var}); // sass-lint:disable-line no-duplicate-properties
-		} @else if $prismjs-theme-core--use-css-variables == 2 {
-			#{$css-property}: var(#{$var});
-		} @else {
-			#{$css-property}: $value;
+@mixin _prismjs-theme-core--print-css-vars ($map, $prefix: '') {
+	@each $var, $value in $map {
+		@if $value {
+			#{$prefix + '--' + $var}: $value;
 		}
 	}
 }
 
-@mixin _prismjs-theme-core--use-map($lists) {
-	@each $list in $lists {
-		@include _prismjs-theme-core--use(nth($list, 1), nth($list, 2), nth($list, 3));
+@mixin _prismjs-theme-core--get-values ($map, $prefix: '') {
+	@each $property, $value in $map {
+		@if $value {
+			@if $prismjs-theme-core--use-css-variables == 1 {
+				#{$property}: $value;
+				#{$property}: var(#{$prefix + '--' + $property}); // sass-lint:disable-line no-duplicate-properties
+			} @else if $prismjs-theme-core--use-css-variables == 2 {
+				#{$property}: var(#{$prefix + '--' + $property});
+			} @else {
+				#{$property}: $value;
+			}
+		}
 	}
 }
 
-@mixin prismjs-theme-core--generate() {
+@mixin prismjs-theme-core--generate () {
 	@if ($prismjs-theme-core--use-css-variables != 0) {
 		:root {
-			@include _prismjs-theme-core--set-map((
-				(--prismjs-theme-core--use-css-variables, $prismjs-theme-core--use-css-variables),
-				(--prismjs-theme-core--color, $prismjs-theme-core--color),
-				(--prismjs-theme-core--background, $prismjs-theme-core--background),
-				(--prismjs-theme-core--text-shadow, $prismjs-theme-core--text-shadow),
-				(--prismjs-theme-core--font-family, $prismjs-theme-core--font-family),
-				(--prismjs-theme-core--font-size, $prismjs-theme-core--font-size),
-				(--prismjs-theme-core--line-height, $prismjs-theme-core--line-height),
-				(--prismjs-theme-core--tab-size, $prismjs-theme-core--tab-size),
-				(--prismjs-theme-core--selection--color, $prismjs-theme-core--selection--color),
-				(--prismjs-theme-core--selection--background, $prismjs-theme-core--selection--background),
-				(--prismjs-theme-core--pre--border-radius, $prismjs-theme-core--pre--border-radius),
-				(--prismjs-theme-core--pre--margin, $prismjs-theme-core--pre--margin),
-				(--prismjs-theme-core--pre--padding, $prismjs-theme-core--pre--padding),
-				(--prismjs-theme-core--code--border-radius, $prismjs-theme-core--code--border-radius),
-				(--prismjs-theme-core--code--padding, $prismjs-theme-core--code--padding),
-				(--prismjs-theme-core--namespace--opacity, $prismjs-theme-core--namespace--opacity),
-				(--prismjs-theme-core--token-comment--color, $prismjs-theme-core--token-comment--color),
-				(--prismjs-theme-core--token-comment--background, $prismjs-theme-core--token-comment--background),
-				(--prismjs-theme-core--token-comment--font-weight, $prismjs-theme-core--token-comment--font-weight),
-				(--prismjs-theme-core--token-comment--font-style, $prismjs-theme-core--token-comment--font-style),
-				(--prismjs-theme-core--token-prolog--color, $prismjs-theme-core--token-prolog--color),
-				(--prismjs-theme-core--token-prolog--background, $prismjs-theme-core--token-prolog--background),
-				(--prismjs-theme-core--token-prolog--font-weight, $prismjs-theme-core--token-prolog--font-weight),
-				(--prismjs-theme-core--token-prolog--font-style, $prismjs-theme-core--token-prolog--font-style),
-				(--prismjs-theme-core--token-doctype--color, $prismjs-theme-core--token-doctype--color),
-				(--prismjs-theme-core--token-doctype--background, $prismjs-theme-core--token-doctype--background),
-				(--prismjs-theme-core--token-doctype--font-weight, $prismjs-theme-core--token-doctype--font-weight),
-				(--prismjs-theme-core--token-doctype--font-style, $prismjs-theme-core--token-doctype--font-style),
-				(--prismjs-theme-core--token-cdata--color, $prismjs-theme-core--token-cdata--color),
-				(--prismjs-theme-core--token-cdata--background, $prismjs-theme-core--token-cdata--background),
-				(--prismjs-theme-core--token-cdata--font-weight, $prismjs-theme-core--token-cdata--font-weight),
-				(--prismjs-theme-core--token-cdata--font-style, $prismjs-theme-core--token-cdata--font-style),
-				(--prismjs-theme-core--token-punctuation--color, $prismjs-theme-core--token-punctuation--color),
-				(--prismjs-theme-core--token-punctuation--background, $prismjs-theme-core--token-punctuation--background),
-				(--prismjs-theme-core--token-punctuation--font-weight, $prismjs-theme-core--token-punctuation--font-weight),
-				(--prismjs-theme-core--token-punctuation--font-style, $prismjs-theme-core--token-punctuation--font-style),
-				(--prismjs-theme-core--token-property--color, $prismjs-theme-core--token-property--color),
-				(--prismjs-theme-core--token-property--background, $prismjs-theme-core--token-property--background),
-				(--prismjs-theme-core--token-property--font-weight, $prismjs-theme-core--token-property--font-weight),
-				(--prismjs-theme-core--token-property--font-style, $prismjs-theme-core--token-property--font-style),
-				(--prismjs-theme-core--token-tag--color, $prismjs-theme-core--token-tag--color),
-				(--prismjs-theme-core--token-tag--background, $prismjs-theme-core--token-tag--background),
-				(--prismjs-theme-core--token-tag--font-weight, $prismjs-theme-core--token-tag--font-weight),
-				(--prismjs-theme-core--token-tag--font-style, $prismjs-theme-core--token-tag--font-style),
-				(--prismjs-theme-core--token-boolean--color, $prismjs-theme-core--token-boolean--color),
-				(--prismjs-theme-core--token-boolean--background, $prismjs-theme-core--token-boolean--background),
-				(--prismjs-theme-core--token-boolean--font-weight, $prismjs-theme-core--token-boolean--font-weight),
-				(--prismjs-theme-core--token-boolean--font-style, $prismjs-theme-core--token-boolean--font-style),
-				(--prismjs-theme-core--token-number--color, $prismjs-theme-core--token-number--color),
-				(--prismjs-theme-core--token-number--background, $prismjs-theme-core--token-number--background),
-				(--prismjs-theme-core--token-number--font-weight, $prismjs-theme-core--token-number--font-weight),
-				(--prismjs-theme-core--token-number--font-style, $prismjs-theme-core--token-number--font-style),
-				(--prismjs-theme-core--token-constant--color, $prismjs-theme-core--token-constant--color),
-				(--prismjs-theme-core--token-constant--background, $prismjs-theme-core--token-constant--background),
-				(--prismjs-theme-core--token-constant--font-weight, $prismjs-theme-core--token-constant--font-weight),
-				(--prismjs-theme-core--token-constant--font-style, $prismjs-theme-core--token-constant--font-style),
-				(--prismjs-theme-core--token-symbol--color, $prismjs-theme-core--token-symbol--color),
-				(--prismjs-theme-core--token-symbol--background, $prismjs-theme-core--token-symbol--background),
-				(--prismjs-theme-core--token-symbol--font-weight, $prismjs-theme-core--token-symbol--font-weight),
-				(--prismjs-theme-core--token-symbol--font-style, $prismjs-theme-core--token-symbol--font-style),
-				(--prismjs-theme-core--token-deleted--color, $prismjs-theme-core--token-deleted--color),
-				(--prismjs-theme-core--token-deleted--background, $prismjs-theme-core--token-deleted--background),
-				(--prismjs-theme-core--token-deleted--font-weight, $prismjs-theme-core--token-deleted--font-weight),
-				(--prismjs-theme-core--token-deleted--font-style, $prismjs-theme-core--token-deleted--font-style),
-				(--prismjs-theme-core--token-selector--color, $prismjs-theme-core--token-selector--color),
-				(--prismjs-theme-core--token-selector--background, $prismjs-theme-core--token-selector--background),
-				(--prismjs-theme-core--token-selector--font-weight, $prismjs-theme-core--token-selector--font-weight),
-				(--prismjs-theme-core--token-selector--font-style, $prismjs-theme-core--token-selector--font-style),
-				(--prismjs-theme-core--token-attr-name--color, $prismjs-theme-core--token-attr-name--color),
-				(--prismjs-theme-core--token-attr-name--background, $prismjs-theme-core--token-attr-name--background),
-				(--prismjs-theme-core--token-attr-name--font-weight, $prismjs-theme-core--token-attr-name--font-weight),
-				(--prismjs-theme-core--token-attr-name--font-style, $prismjs-theme-core--token-attr-name--font-style),
-				(--prismjs-theme-core--token-string--color, $prismjs-theme-core--token-string--color),
-				(--prismjs-theme-core--token-string--background, $prismjs-theme-core--token-string--background),
-				(--prismjs-theme-core--token-string--font-weight, $prismjs-theme-core--token-string--font-weight),
-				(--prismjs-theme-core--token-string--font-style, $prismjs-theme-core--token-string--font-style),
-				(--prismjs-theme-core--token-char--color, $prismjs-theme-core--token-char--color),
-				(--prismjs-theme-core--token-char--background, $prismjs-theme-core--token-char--background),
-				(--prismjs-theme-core--token-char--font-weight, $prismjs-theme-core--token-char--font-weight),
-				(--prismjs-theme-core--token-char--font-style, $prismjs-theme-core--token-char--font-style),
-				(--prismjs-theme-core--token-builtin--color, $prismjs-theme-core--token-builtin--color),
-				(--prismjs-theme-core--token-builtin--background, $prismjs-theme-core--token-builtin--background),
-				(--prismjs-theme-core--token-builtin--font-weight, $prismjs-theme-core--token-builtin--font-weight),
-				(--prismjs-theme-core--token-builtin--font-style, $prismjs-theme-core--token-builtin--font-style),
-				(--prismjs-theme-core--token-inserted--color, $prismjs-theme-core--token-inserted--color),
-				(--prismjs-theme-core--token-inserted--background, $prismjs-theme-core--token-inserted--background),
-				(--prismjs-theme-core--token-inserted--font-weight, $prismjs-theme-core--token-inserted--font-weight),
-				(--prismjs-theme-core--token-inserted--font-style, $prismjs-theme-core--token-inserted--font-style),
-				(--prismjs-theme-core--token-operator--color, $prismjs-theme-core--token-operator--color),
-				(--prismjs-theme-core--token-operator--background, $prismjs-theme-core--token-operator--background),
-				(--prismjs-theme-core--token-operator--font-weight, $prismjs-theme-core--token-operator--font-weight),
-				(--prismjs-theme-core--token-operator--font-style, $prismjs-theme-core--token-operator--font-style),
-				(--prismjs-theme-core--token-entity--color, $prismjs-theme-core--token-entity--color),
-				(--prismjs-theme-core--token-entity--background, $prismjs-theme-core--token-entity--background),
-				(--prismjs-theme-core--token-entity--font-weight, $prismjs-theme-core--token-entity--font-weight),
-				(--prismjs-theme-core--token-entity--font-style, $prismjs-theme-core--token-entity--font-style),
-				(--prismjs-theme-core--token-url--color, $prismjs-theme-core--token-url--color),
-				(--prismjs-theme-core--token-url--background, $prismjs-theme-core--token-url--background),
-				(--prismjs-theme-core--token-url--font-weight, $prismjs-theme-core--token-url--font-weight),
-				(--prismjs-theme-core--token-url--font-style, $prismjs-theme-core--token-url--font-style),
-				(--prismjs-theme-core--token-atrule--color, $prismjs-theme-core--token-atrule--color),
-				(--prismjs-theme-core--token-atrule--background, $prismjs-theme-core--token-atrule--background),
-				(--prismjs-theme-core--token-atrule--font-weight, $prismjs-theme-core--token-atrule--font-weight),
-				(--prismjs-theme-core--token-atrule--font-style, $prismjs-theme-core--token-atrule--font-style),
-				(--prismjs-theme-core--token-attr-value--color, $prismjs-theme-core--token-attr-value--color),
-				(--prismjs-theme-core--token-attr-value--background, $prismjs-theme-core--token-attr-value--background),
-				(--prismjs-theme-core--token-attr-value--font-weight, $prismjs-theme-core--token-attr-value--font-weight),
-				(--prismjs-theme-core--token-attr-value--font-style, $prismjs-theme-core--token-attr-value--font-style),
-				(--prismjs-theme-core--token-keyword--color, $prismjs-theme-core--token-keyword--color),
-				(--prismjs-theme-core--token-keyword--background, $prismjs-theme-core--token-keyword--background),
-				(--prismjs-theme-core--token-keyword--font-weight, $prismjs-theme-core--token-keyword--font-weight),
-				(--prismjs-theme-core--token-keyword--font-style, $prismjs-theme-core--token-keyword--font-style),
-				(--prismjs-theme-core--token-function--color, $prismjs-theme-core--token-function--color),
-				(--prismjs-theme-core--token-function--background, $prismjs-theme-core--token-function--background),
-				(--prismjs-theme-core--token-function--font-weight, $prismjs-theme-core--token-function--font-weight),
-				(--prismjs-theme-core--token-function--font-style, $prismjs-theme-core--token-function--font-style),
-				(--prismjs-theme-core--token-class-name--color, $prismjs-theme-core--token-class-name--color),
-				(--prismjs-theme-core--token-class-name--background, $prismjs-theme-core--token-class-name--background),
-				(--prismjs-theme-core--token-class-name--font-weight, $prismjs-theme-core--token-class-name--font-weight),
-				(--prismjs-theme-core--token-class-name--font-style, $prismjs-theme-core--token-class-name--font-style),
-				(--prismjs-theme-core--token-regex--color, $prismjs-theme-core--token-regex--color),
-				(--prismjs-theme-core--token-regex--background, $prismjs-theme-core--token-regex--background),
-				(--prismjs-theme-core--token-regex--font-weight, $prismjs-theme-core--token-regex--font-weight),
-				(--prismjs-theme-core--token-regex--font-style, $prismjs-theme-core--token-regex--font-style),
-				(--prismjs-theme-core--token-important--color, $prismjs-theme-core--token-important--color),
-				(--prismjs-theme-core--token-important--background, $prismjs-theme-core--token-important--background),
-				(--prismjs-theme-core--token-important--font-weight, $prismjs-theme-core--token-important--font-weight),
-				(--prismjs-theme-core--token-important--font-style, $prismjs-theme-core--token-important--font-style),
-				(--prismjs-theme-core--token-variable--color, $prismjs-theme-core--token-variable--color),
-				(--prismjs-theme-core--token-variable--background, $prismjs-theme-core--token-variable--background),
-				(--prismjs-theme-core--token-variable--font-weight, $prismjs-theme-core--token-variable--font-weight),
-				(--prismjs-theme-core--token-variable--font-style, $prismjs-theme-core--token-variable--font-style)
-			));
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--base, --prismjs-theme-core--base);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--selection, --prismjs-theme-core--selection);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--pre, --prismjs-theme-core--pre);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--code, --prismjs-theme-core--code);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--namespace, --prismjs-theme-core--namespace);
+
+			@include _prismjs-theme-core--print-css-vars--token-atrule();
+			@include _prismjs-theme-core--print-css-vars--token-attr-name();
+			@include _prismjs-theme-core--print-css-vars--token-attr-value();
+			@include _prismjs-theme-core--print-css-vars--token-attribute();
+			@include _prismjs-theme-core--print-css-vars--token-boolean();
+			@include _prismjs-theme-core--print-css-vars--token-builtin();
+			@include _prismjs-theme-core--print-css-vars--token-cdata();
+			@include _prismjs-theme-core--print-css-vars--token-char();
+			@include _prismjs-theme-core--print-css-vars--token-class();
+			@include _prismjs-theme-core--print-css-vars--token-class-name();
+			@include _prismjs-theme-core--print-css-vars--token-comment();
+			@include _prismjs-theme-core--print-css-vars--token-constant();
+			@include _prismjs-theme-core--print-css-vars--token-deleted();
+			@include _prismjs-theme-core--print-css-vars--token-doctype();
+			@include _prismjs-theme-core--print-css-vars--token-entity();
+			@include _prismjs-theme-core--print-css-vars--token-hexcode();
+			@include _prismjs-theme-core--print-css-vars--token-function();
+			@include _prismjs-theme-core--print-css-vars--token-id();
+			@include _prismjs-theme-core--print-css-vars--token-important();
+			@include _prismjs-theme-core--print-css-vars--token-inserted();
+			@include _prismjs-theme-core--print-css-vars--token-keyword();
+			@include _prismjs-theme-core--print-css-vars--token-number();
+			@include _prismjs-theme-core--print-css-vars--token-operator();
+			@include _prismjs-theme-core--print-css-vars--token-prolog();
+			@include _prismjs-theme-core--print-css-vars--token-property();
+			@include _prismjs-theme-core--print-css-vars--token-pseudo-class();
+			@include _prismjs-theme-core--print-css-vars--token-pseudo-element();
+			@include _prismjs-theme-core--print-css-vars--token-punctuation();
+			@include _prismjs-theme-core--print-css-vars--token-regex();
+			@include _prismjs-theme-core--print-css-vars--token-selector();
+			@include _prismjs-theme-core--print-css-vars--token-string();
+			@include _prismjs-theme-core--print-css-vars--token-symbol();
+			@include _prismjs-theme-core--print-css-vars--token-tag();
+			@include _prismjs-theme-core--print-css-vars--token-url();
+			@include _prismjs-theme-core--print-css-vars--token-variable();
 		}
 	}
 
 	%base {
-		@include _prismjs-theme-core--use-map((
-				(color, $prismjs-theme-core--color, --prismjs-theme-core--color),
-				(text-shadow, $prismjs-theme-core--text-shadow, --prismjs-theme-core--text-shadow),
-				(font-family, $prismjs-theme-core--font-family, --prismjs-theme-core--font-family),
-				(line-height, $prismjs-theme-core--line-height, --prismjs-theme-core--line-height),
-				(tab-size, $prismjs-theme-core--tab-size, --prismjs-theme-core--tab-size)
-		));
-		background: none;
+		@include _prismjs-theme-core--get-values($prismjs-theme-core--base, --prismjs-theme-core--base);
 		text-align: left;
 		white-space: pre;
 		word-spacing: normal;
@@ -191,20 +81,14 @@
 
 		&::-moz-selection,
 		& ::-moz-selection {
-			@include _prismjs-theme-core--use-map((
-					(background, $prismjs-theme-core--selection--background, --prismjs-theme-core--selection--background),
-					(color, $prismjs-theme-core--selection--color, --prismjs-theme-core--selection--color)
-			));
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection);
 			text-shadow: none;
 			opacity: 1;
 		}
 
 		&::selection,
 		& ::selection {
-			@include _prismjs-theme-core--use-map((
-					(background, $prismjs-theme-core--selection--background, --prismjs-theme-core--selection--background),
-					(color, $prismjs-theme-core--selection--color, --prismjs-theme-core--selection--color)
-			));
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection);
 			text-shadow: none;
 			opacity: 1;
 		}
@@ -219,292 +103,173 @@
 			@extend %base;
 
 			:not(pre) > & {
-				@include _prismjs-theme-core--use-map((
-						(background, $prismjs-theme-core--background, --prismjs-theme-core--background),
-						(border-radius, $prismjs-theme-core--code--border-radius, --prismjs-theme-core--code--border-radius),
-						(padding, $prismjs-theme-core--pre--padding, --prismjs-theme-core--code--padding)
-				));
+				@include _prismjs-theme-core--get-values($prismjs-theme-core--code, --prismjs-theme-core--code);
 				white-space: normal;
+			}
+
+			pre > & {
+				background: none;
 			}
 		}
 
 		@at-root pre#{&} {
 			@extend %base;
-			@include _prismjs-theme-core--use-map((
-					(background, $prismjs-theme-core--background, --prismjs-theme-core--background),
-					(border-radius, $prismjs-theme-core--pre--border-radius, --prismjs-theme-core--pre--border-radius),
-					(padding, $prismjs-theme-core--pre--padding, --prismjs-theme-core--pre--padding),
-					(margin, $prismjs-theme-core--pre--margin, --prismjs-theme-core--pre--margin)
-			));
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--pre, --prismjs-theme-core--pre);
 			overflow: auto;
 		}
 
 		.namespace {
-			@include _prismjs-theme-core--use(opacity, $prismjs-theme-core--namespace--opacity, --prismjs-theme-core--namespace--opacity);
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--namespace, --prismjs-theme-core--namespace);
+		}
+	}
+
+	.token {
+		&.atrule {
+			@include _prismjs-theme-core--get-values--token-atrule();
 		}
 
-		.token {
-			&.comment {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-comment--color, --prismjs-theme-core--token-comment--color),
-						(background, $prismjs-theme-core--token-comment--background, --prismjs-theme-core--token-comment--background),
-						(font-weight, $prismjs-theme-core--token-comment--font-weight, --prismjs-theme-core--token-comment--font-weight),
-						(font-style, $prismjs-theme-core--token-comment--font-style, --prismjs-theme-core--token-comment--font-style)
-				));
-			}
+		&.attr-name {
+			@include _prismjs-theme-core--get-values--token-attr-name();
+		}
 
-			&.prolog {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-prolog--color, --prismjs-theme-core--token-prolog--color),
-						(background, $prismjs-theme-core--token-prolog--background, --prismjs-theme-core--token-prolog--background),
-						(font-weight, $prismjs-theme-core--token-prolog--font-weight, --prismjs-theme-core--token-prolog--font-weight),
-						(font-style, $prismjs-theme-core--token-prolog--font-style, --prismjs-theme-core--token-prolog--font-style)
-				));
-			}
+		&.attr-value {
+			@include _prismjs-theme-core--get-values--token-attr-value();
+		}
 
-			&.doctype {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-doctype--color, --prismjs-theme-core--token-doctype--color),
-						(background, $prismjs-theme-core--token-doctype--background, --prismjs-theme-core--token-doctype--background),
-						(font-weight, $prismjs-theme-core--token-doctype--font-weight, --prismjs-theme-core--token-doctype--font-weight),
-						(font-style, $prismjs-theme-core--token-doctype--font-style, --prismjs-theme-core--token-doctype--font-style)
-				));
-			}
+		&.attribute {
+			@include _prismjs-theme-core--get-values--token-attribute();
+		}
 
-			&.cdata {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-cdata--color, --prismjs-theme-core--token-cdata--color),
-						(background, $prismjs-theme-core--token-cdata--background, --prismjs-theme-core--token-cdata--background),
-						(font-weight, $prismjs-theme-core--token-cdata--font-weight, --prismjs-theme-core--token-cdata--font-weight),
-						(font-style, $prismjs-theme-core--token-cdata--font-style, --prismjs-theme-core--token-cdata--font-style)
-				));
-			}
+		&.boolean {
+			@include _prismjs-theme-core--get-values--token-boolean();
+		}
 
-			&.punctuation {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-punctuation--color, --prismjs-theme-core--token-punctuation--color),
-						(background, $prismjs-theme-core--token-punctuation--background, --prismjs-theme-core--token-punctuation--background),
-						(font-weight, $prismjs-theme-core--token-punctuation--font-weight, --prismjs-theme-core--token-punctuation--font-weight),
-						(font-style, $prismjs-theme-core--token-punctuation--font-style, --prismjs-theme-core--token-punctuation--font-style)
-				));
-			}
+		&.builtin {
+			@include _prismjs-theme-core--get-values--token-builtin();
+		}
 
-			&.property {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-property--color, --prismjs-theme-core--token-property--color),
-						(background, $prismjs-theme-core--token-property--background, --prismjs-theme-core--token-property--background),
-						(font-weight, $prismjs-theme-core--token-property--font-weight, --prismjs-theme-core--token-property--font-weight),
-						(font-style, $prismjs-theme-core--token-property--font-style, --prismjs-theme-core--token-punctuation--font-style)
-				));
-			}
+		&.cdata {
+			@include _prismjs-theme-core--get-values--token-cdata();
+		}
 
-			&.tag {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-tag--color, --prismjs-theme-core--token-tag--color),
-						(background, $prismjs-theme-core--token-tag--background, --prismjs-theme-core--token-tag--background),
-						(font-weight, $prismjs-theme-core--token-tag--font-weight, --prismjs-theme-core--token-tag--font-weight),
-						(font-style, $prismjs-theme-core--token-tag--font-style, --prismjs-theme-core--token-tag--font-style)
-				));
-			}
+		&.char {
+			@include _prismjs-theme-core--get-values--token-char();
+		}
 
-			&.boolean {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-boolean--color, --prismjs-theme-core--token-boolean--color),
-						(background, $prismjs-theme-core--token-boolean--background, --prismjs-theme-core--token-boolean--background),
-						(font-weight, $prismjs-theme-core--token-boolean--font-weight, --prismjs-theme-core--token-boolean--font-weight),
-						(font-style, $prismjs-theme-core--token-boolean--font-style, --prismjs-theme-core--token-boolean--font-style)
-				));
-			}
+		&.class {
+			@include _prismjs-theme-core--get-values--token-class();
+		}
 
-			&.number {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-number--color, --prismjs-theme-core--token-number--color),
-						(background, $prismjs-theme-core--token-number--background, --prismjs-theme-core--token-number--background),
-						(font-weight, $prismjs-theme-core--token-number--font-weight, --prismjs-theme-core--token-number--font-weight),
-						(font-style, $prismjs-theme-core--token-number--font-style, --prismjs-theme-core--token-number--font-style)
-				));
-			}
+		&.class-name {
+			@include _prismjs-theme-core--get-values--token-class-name();
+		}
 
-			&.constant {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-constant--color, --prismjs-theme-core--token-constant--color),
-						(background, $prismjs-theme-core--token-constant--background, --prismjs-theme-core--token-constant--background),
-						(font-weight, $prismjs-theme-core--token-constant--font-weight, --prismjs-theme-core--token-constant--font-weight),
-						(font-style, $prismjs-theme-core--token-constant--font-style, --prismjs-theme-core--token-constant--font-style)
-				));
-			}
+		&.comment {
+			@include _prismjs-theme-core--get-values--token-comment();
+		}
 
-			&.symbol {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-symbol--color, --prismjs-theme-core--token-symbol--color),
-						(background, $prismjs-theme-core--token-symbol--background, --prismjs-theme-core--token-symbol--background),
-						(font-weight, $prismjs-theme-core--token-symbol--font-weight, --prismjs-theme-core--token-symbol--font-weight),
-						(font-style, $prismjs-theme-core--token-symbol--font-style, --prismjs-theme-core--token-symbol--font-style)
-				));
-			}
+		&.constant {
+			@include _prismjs-theme-core--get-values--token-constant();
+		}
 
-			&.deleted {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-deleted--color, --prismjs-theme-core--token-deleted--color),
-						(background, $prismjs-theme-core--token-deleted--background, --prismjs-theme-core--token-deleted--background),
-						(font-weight, $prismjs-theme-core--token-deleted--font-weight, --prismjs-theme-core--token-deleted--font-weight),
-						(font-style, $prismjs-theme-core--token-deleted--font-style, --prismjs-theme-core--token-deleted--font-style)
-				));
-			}
+		&.deleted {
+			@include _prismjs-theme-core--get-values--token-deleted();
+		}
 
-			&.selector {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-selector--color, --prismjs-theme-core--token-selector--color),
-						(background, $prismjs-theme-core--token-selector--background, --prismjs-theme-core--token-selector--background),
-						(font-weight, $prismjs-theme-core--token-selector--font-weight, --prismjs-theme-core--token-selector--font-weight),
-						(font-style, $prismjs-theme-core--token-selector--font-style, --prismjs-theme-core--token-selector--font-style)
-				));
-			}
+		&.doctype {
+			@include _prismjs-theme-core--get-values--token-doctype();
+		}
 
-			&.attr-name {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-attr-name--color, --prismjs-theme-core--token-attr-name--color),
-						(background, $prismjs-theme-core--token-attr-name--background, --prismjs-theme-core--token-attr-name--background),
-						(font-weight, $prismjs-theme-core--token-attr-name--font-weight, --prismjs-theme-core--token-attr-name--font-weight),
-						(font-style, $prismjs-theme-core--token-attr-name--font-style, --prismjs-theme-core--token-attr-name--font-style)
-				));
-			}
+		&.entity {
+			@include _prismjs-theme-core--get-values--token-entity();
+		}
 
-			&.string {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-string--color, --prismjs-theme-core--token-string--color),
-						(background, $prismjs-theme-core--token-string--background, --prismjs-theme-core--token-string--background),
-						(font-weight, $prismjs-theme-core--token-string--font-weight, --prismjs-theme-core--token-string--font-weight),
-						(font-style, $prismjs-theme-core--token-string--font-style, --prismjs-theme-core--token-string--font-style)
-				));
-			}
+		&.function {
+			@include _prismjs-theme-core--get-values--token-function();
+		}
 
-			&.char {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-char--color, --prismjs-theme-core--token-char--color),
-						(background, $prismjs-theme-core--token-char--background, --prismjs-theme-core--token-char--background),
-						(font-weight, $prismjs-theme-core--token-char--font-weight, --prismjs-theme-core--token-char--font-weight),
-						(font-style, $prismjs-theme-core--token-char--font-style, --prismjs-theme-core--token-char--font-style)
-				));
-			}
+		&.hexcode {
+			@include _prismjs-theme-core--get-values--token-hexcode();
+		}
 
-			&.builtin {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-builtin--color, --prismjs-theme-core--token-builtin--color),
-						(background, $prismjs-theme-core--token-builtin--background, --prismjs-theme-core--token-builtin--background),
-						(font-weight, $prismjs-theme-core--token-builtin--font-weight, --prismjs-theme-core--token-builtin--font-weight),
-						(font-style, $prismjs-theme-core--token-builtin--font-style, --prismjs-theme-core--token-builtin--font-style)
-				));
-			}
+		&.id {
+			@include _prismjs-theme-core--get-values--token-id();
+		}
 
-			&.inserted {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-inserted--color, --prismjs-theme-core--token-inserted--color),
-						(background, $prismjs-theme-core--token-inserted--background, --prismjs-theme-core--token-inserted--background),
-						(font-weight, $prismjs-theme-core--token-inserted--font-weight, --prismjs-theme-core--token-inserted--font-weight),
-						(font-style, $prismjs-theme-core--token-inserted--font-style, --prismjs-theme-core--token-inserted--font-style)
-				));
-			}
+		&.important {
+			@include _prismjs-theme-core--get-values--token-important();
+		}
 
-			&.operator {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-operator--color, --prismjs-theme-core--token-operator--color),
-						(background, $prismjs-theme-core--token-operator--background, --prismjs-theme-core--token-operator--background),
-						(font-weight, $prismjs-theme-core--token-operator--font-weight, --prismjs-theme-core--token-operator--font-weight),
-						(font-style, $prismjs-theme-core--token-operator--font-style, --prismjs-theme-core--token-operator--font-style)
-				));
-			}
+		&.inserted {
+			@include _prismjs-theme-core--get-values--token-inserted();
+		}
 
-			&.entity {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-entity--color, --prismjs-theme-core--token-entity--color),
-						(background, $prismjs-theme-core--token-entity--background, --prismjs-theme-core--token-entity--background),
-						(font-weight, $prismjs-theme-core--token-entity--font-weight, --prismjs-theme-core--token-entity--font-weight),
-						(font-style, $prismjs-theme-core--token-entity--font-style, --prismjs-theme-core--token-entity--font-style)
-				));
-				cursor: help;
-			}
+		&.keyword {
+			@include _prismjs-theme-core--get-values--token-keyword();
+		}
 
-			&.url {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-url--color, --prismjs-theme-core--token-url--color),
-						(background, $prismjs-theme-core--token-url--background, --prismjs-theme-core--token-url--background),
-						(font-weight, $prismjs-theme-core--token-url--font-weight, --prismjs-theme-core--token-url--font-weight),
-						(font-style, $prismjs-theme-core--token-url--font-style, --prismjs-theme-core--token-url--font-style)
-				));
-			}
+		&.number {
+			@include _prismjs-theme-core--get-values--token-number();
+		}
 
-			&.atrule {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-atrule--color, --prismjs-theme-core--token-atrule--color),
-						(background, $prismjs-theme-core--token-atrule--background, --prismjs-theme-core--token-atrule--background),
-						(font-weight, $prismjs-theme-core--token-atrule--font-weight, --prismjs-theme-core--token-atrule--font-weight),
-						(font-style, $prismjs-theme-core--token-atrule--font-style, --prismjs-theme-core--token-atrule--font-style)
-				));
-			}
+		&.operator {
+			@include _prismjs-theme-core--get-values--token-operator();
+		}
 
-			&.attr-value {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-attr-value--color, --prismjs-theme-core--token-attr-value--color),
-						(background, $prismjs-theme-core--token-attr-value--background, --prismjs-theme-core--token-attr-value--background),
-						(font-weight, $prismjs-theme-core--token-attr-value--font-weight, --prismjs-theme-core--token-attr-value--font-weight),
-						(font-style, $prismjs-theme-core--token-attr-value--font-style, --prismjs-theme-core--token-attr-value--font-style)
-				));
-			}
+		&.prolog {
+			@include _prismjs-theme-core--get-values--token-prolog();
+		}
 
-			&.keyword {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-keyword--color, --prismjs-theme-core--token-keyword--color),
-						(background, $prismjs-theme-core--token-keyword--background, --prismjs-theme-core--token-keyword--background),
-						(font-weight, $prismjs-theme-core--token-keyword--font-weight, --prismjs-theme-core--token-keyword--font-weight),
-						(font-style, $prismjs-theme-core--token-keyword--font-style, --prismjs-theme-core--token-keyword--font-style)
-				));
-			}
+		&.property {
+			@include _prismjs-theme-core--get-values--token-property();
+		}
 
-			&.function {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-function--color, --prismjs-theme-core--token-function--color),
-						(background, $prismjs-theme-core--token-function--background, --prismjs-theme-core--token-function--background),
-						(font-weight, $prismjs-theme-core--token-function--font-weight, --prismjs-theme-core--token-function--font-weight),
-						(font-style, $prismjs-theme-core--token-function--font-style, --prismjs-theme-core--token-function--font-style)
-				));
-			}
+		&.pseudo-class {
+			@include _prismjs-theme-core--get-values--token-pseudo-class();
+		}
 
-			&.class-name {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-class-name--color, --prismjs-theme-core--token-class-name--color),
-						(background, $prismjs-theme-core--token-class-name--background, --prismjs-theme-core--token-class-name--background),
-						(font-weight, $prismjs-theme-core--token-class-name--font-weight, --prismjs-theme-core--token-class-name--font-weight),
-						(font-style, $prismjs-theme-core--token-class-name--font-style, --prismjs-theme-core--token-class-name--font-style)
-				));
-			}
+		&.pseudo-element {
+			@include _prismjs-theme-core--get-values--token-pseudo-element();
+		}
 
-			&.regex {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-regex--color, --prismjs-theme-core--token-regex--color),
-						(background, $prismjs-theme-core--token-regex--background, --prismjs-theme-core--token-regex--background),
-						(font-weight, $prismjs-theme-core--token-regex--font-weight, --prismjs-theme-core--token-regex--font-weight),
-						(font-style, $prismjs-theme-core--token-regex--font-style, --prismjs-theme-core--token-regex--font-style)
-				));
-			}
+		&.punctuation {
+			@include _prismjs-theme-core--get-values--token-punctuation();
+		}
 
-			&.important {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-important--color, --prismjs-theme-core--token-important--color),
-						(background, $prismjs-theme-core--token-important--background, --prismjs-theme-core--token-important--background),
-						(font-weight, $prismjs-theme-core--token-important--font-weight, --prismjs-theme-core--token-important--font-weight),
-						(font-style, $prismjs-theme-core--token-important--font-style, --prismjs-theme-core--token-important--font-style)
-				));
-			}
+		&.regex {
+			@include _prismjs-theme-core--get-values--token-regex();
+		}
 
-			&.variable {
-				@include _prismjs-theme-core--use-map((
-						(color, $prismjs-theme-core--token-variable--color, --prismjs-theme-core--token-variable--color),
-						(background, $prismjs-theme-core--token-variable--background, --prismjs-theme-core--token-variable--background),
-						(font-weight, $prismjs-theme-core--token-variable--font-weight, --prismjs-theme-core--token-variable--font-weight),
-						(font-style, $prismjs-theme-core--token-variable--font-style, --prismjs-theme-core--token-variable--font-style)
-				));
-			}
+		&.selector {
+			@include _prismjs-theme-core--get-values--token-selector();
+		}
+
+		&.string {
+			@include _prismjs-theme-core--get-values--token-string();
+		}
+
+		&.symbol {
+			@include _prismjs-theme-core--get-values--token-symbol();
+		}
+
+		&.tag {
+			@include _prismjs-theme-core--get-values--token-tag();
+		}
+
+		&.url {
+			@include _prismjs-theme-core--get-values--token-url();
+		}
+
+		&.variable {
+			@include _prismjs-theme-core--get-values--token-variable();
+		}
+
+		&.bold {
+			font-weight: bold;
+		}
+
+		&.italic {
+			font-weight: italic;
 		}
 	}
 }
