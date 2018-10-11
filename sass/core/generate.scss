@@ -24,6 +24,10 @@
 }
 
 @mixin prismjs-theme-core--generate () {
+	@if ($prismjs-theme-core--css-import-fonts) {
+		@import url(#{$prismjs-theme-core--css-import-fonts});
+	}
+
 	@if ($prismjs-theme-core--use-css-variables != 0) {
 		:root {
 			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--base, --prismjs-theme-core--base);
