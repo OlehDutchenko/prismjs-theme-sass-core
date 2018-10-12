@@ -75,26 +75,26 @@
 	}
 
 	%base {
-		@include _prismjs-theme-core--get-values($prismjs-theme-core--base, --prismjs-theme-core--base);
 		text-align: left;
 		white-space: pre;
 		word-spacing: normal;
 		word-break: normal;
 		word-wrap: normal;
 		hyphens: none;
+		@include _prismjs-theme-core--get-values($prismjs-theme-core--base, --prismjs-theme-core--base); // sass-lint:disable-line mixins-before-declarations
 
 		&::-moz-selection,
 		& ::-moz-selection {
-			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection);
 			text-shadow: none;
 			opacity: 1;
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection); // sass-lint:disable-line mixins-before-declarations
 		}
 
 		&::selection,
 		& ::selection {
-			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection);
 			text-shadow: none;
 			opacity: 1;
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--selection, --prismjs-theme-core--selection); // sass-lint:disable-line mixins-before-declarations
 		}
 
 		@media print {
@@ -107,8 +107,8 @@
 			@extend %base;
 
 			:not(pre) > & {
-				@include _prismjs-theme-core--get-values($prismjs-theme-core--code, --prismjs-theme-core--code);
 				white-space: normal;
+				@include _prismjs-theme-core--get-values($prismjs-theme-core--code, --prismjs-theme-core--code); // sass-lint:disable-line mixins-before-declarations
 			}
 
 			pre > & {
@@ -118,8 +118,9 @@
 
 		@at-root pre#{&} {
 			@extend %base;
-			@include _prismjs-theme-core--get-values($prismjs-theme-core--pre, --prismjs-theme-core--pre);
 			overflow: auto;
+			position: relative;
+			@include _prismjs-theme-core--get-values($prismjs-theme-core--pre, --prismjs-theme-core--pre); // sass-lint:disable-line mixins-before-declarations
 		}
 
 		.namespace {
@@ -274,6 +275,40 @@
 
 		&.italic {
 			font-weight: italic;
+		}
+	}
+}
+
+
+@mixin prismjs-theme-core--plugin--line-highlight () {
+	@if ($prismjs-theme-core--use-css-variables != 0) {
+		:root {
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--plugin--line-highlight--pre, --prismjs-theme-core--plugin--line-highlight--pre);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--plugin--line-highlight--lines, --prismjs-theme-core--plugin--line-highlight--lines);
+			@include _prismjs-theme-core--print-css-vars($prismjs-theme-core--plugin--line-highlight--numbers, --prismjs-theme-core--plugin--line-highlight--numbers);
+		}
+	}
+
+	pre {
+		&[class*="language-"] {
+			&[data-line] {
+				@include _prismjs-theme-core--get-values($prismjs-theme-core--plugin--line-highlight--pre, --prismjs-theme-core--plugin--line-highlight--pre);
+			}
+
+			.line-highlight {
+				position: absolute;
+				left: 0;
+				right: 0;
+				padding: 0;
+				pointer-events: none;
+				line-height: inherit;
+				white-space: pre;
+
+				&::before {
+					content: '';
+					@include _prismjs-theme-core--get-values($prismjs-theme-core--plugin--line-highlight--numbers, --prismjs-theme-core--plugin--line-highlight--numbers); // sass-lint:disable-line mixins-before-declarations
+				}
+			}
 		}
 	}
 }
