@@ -12,15 +12,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dutchenkoOleg/prismjs-material-theme.git"
+    "url": "git+https://github.com/dutchenkoOleg/prismjs-theme-sass-core.git"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dutchenkoOleg/prismjs-material-theme/issues"
+    "url": "https://github.com/dutchenkoOleg/prismjs-theme-sass-core/issues"
   },
-  "homepage": "https://github.com/dutchenkoOleg/prismjs-material-theme#readme",
+  "homepage": "https://github.com/dutchenkoOleg/prismjs-theme-sass-core#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "browser-sync": "^2.26.0",
