@@ -69,6 +69,7 @@
 			@include _prismjs-theme-core--print-css-vars--token-string();
 			@include _prismjs-theme-core--print-css-vars--token-symbol();
 			@include _prismjs-theme-core--print-css-vars--token-tag();
+			@include _prismjs-theme-core--print-css-vars--token-unit();
 			@include _prismjs-theme-core--print-css-vars--token-url();
 			@include _prismjs-theme-core--print-css-vars--token-variable();
 		}
@@ -259,6 +260,10 @@
 
 		&.tag {
 			@include _prismjs-theme-core--get-values--token-tag();
+		}
+
+		&.unit {
+			@include _prismjs-theme-core--get-values--token-unit();
 		}
 
 		&.url {
